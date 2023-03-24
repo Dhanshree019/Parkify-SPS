@@ -1,0 +1,194 @@
+{% load static %}
+{% static "images" as url_of_img %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with LeadMark landing page.">
+    <meta name="author" content="Devcrud">
+    <!-- font icons -->
+    <link rel="stylesheet" href="{% static 'vendors/themify-icons/css/themify-icons.css' %}">
+    <!-- Bootstrap + LeadMark main styles -->
+    <link rel="stylesheet" href="{% static 'css/leadmark.css' %}">
+    <title>Profile</title>
+</head>
+<body>
+    <!-- page Navigation -->
+    <div class="profile_div">
+    <nav class="navbar custom-navbar navbar-expand-md navbar-light fixed-top" data-spy="affix" data-offset-top="10">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'imgs/logo.png' %}" alt="">
+            </a>
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html">Profile</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a href="/" class="ml-4 nav-link btn btn-primary btn-sm rounded">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="logout" class="ml-4 nav-link btn btn-primary btn-sm rounded">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+    <!-- End Of Second Navigation -->
+
+    <!-- Profile Page -->
+
+
+    <style>
+
+        #profile_pm_div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 0 12% 0 0;
+        }
+
+        #payment_method_div {
+            border: 3px solid red;
+            padding: 10px;
+        }
+
+        #show_payment_method {
+            padding: 10px 5px 10px 5px;
+            margin: 25px 0px 5px 0px;
+            border: 1px solid black;
+            height: 100px;
+            text-align: left;
+        }
+
+    </style>
+
+
+    <div id="profile_pm_div">
+
+        <div class="profile_top">
+            <h3 class="vechicle_number"> Vehicle : {{user.vehicle_no}} </h3>
+            <h3 class="vechicle_number"> Name : {{user.name}} </h3>
+            <br> <br>
+            <!-- <h5 class="vechicle_number"> Email : {{user.email}} </h5>
+            <h5 class="vechicle_number"> Phone : {{user.phone}} </h5> -->
+            
+            
+            <h4 class="fair">Total Payable Amount :: {{total_amount}} Rs  </h4> 
+            {% if total_amount != 0 and total_amount != None %}
+            <a href="/payment/get">
+                <button class="btn btn-success"> Pay {{total_amount}} Rs </button>
+            </a>
+            
+            {% endif %}
+        
+            
+        </div>
+
+        <div id="payment_method_div" class="profile_top">
+            
+            <div id="payment_method_btn_div" class="d-flex justify-content-between">
+                <h3 class="mr-5 ml-3">Payment Method </h3>
+                <!-- <h3 class="mr-3 ml-5">Add</h3> -->
+                
+                {% if payment_method is not None %}
+                <a href="/payment_method/remove">
+                    <button type="button" class="btn btn-danger">Remove</button>
+                </a>
+                {% else %}
+                <a href="/payment_method/form">
+                    <button type="button" class="btn btn-success">Add</button>
+                </a>
+                {% endif %}
+            </div>
+            
+            <div id="show_payment_method" class="p-2">
+
+                {% if payment_method is not None %}
+                <h5>Name : {{payment_method.name_on_card}}</h5>
+                <h5>Card no. : {{payment_method.card_no}} </h5>
+
+                <div class="d-flex justify-content-between">
+                    <h6>Exp Month : {{payment_method.exp_month}}</h6>
+                    <h6>Exp Year : {{payment_method.exp_year}}</h6>
+                </div>
+                <!-- <h3> **** **** **** 1234</h3> -->
+                {% else %}
+                <h5>Please add new payment method!</h5>
+                {% endif %}
+
+            </div>
+
+        </div>
+    </div>
+
+
+<div class="profile_table">
+    <table>
+        <thead>
+           <tr>
+             <th><label>Sr No</label></th>
+             <th><label>Slot No</label></th>
+             <th><label>Entry </label></th>
+             <th><label>Exit</label></th>
+             <th><label>Fair</label></th>
+             <th><label>Payment Status</label></th>
+           </tr>
+         </thead>
+         <tbody>
+
+            {% for ph in park_history %}
+           <tr>
+             <td data-label="Invoice">{{ph.id}}</td>
+             <td data-label="Invoice">{{ph.slot_no}}</td>
+             <td data-label="Details">{{ph.entry}}</td>
+             <td data-label="Due Date">{{ph.exit}}</td>
+             <td data-label="Amount">{{ph.fair}} Rs</td>
+             <td data-label="Payment">
+                <div class="btn-invoice danger"> {{ph.payment_status}} </div>
+                <!-- <button class="btn-invoice"> {{ph.payment_status}} </button> -->
+                <!-- <a href="/payment_status/">
+                </a> -->
+            </td>
+           </tr>
+           {% endfor %}
+           
+           <!-- <tr>
+            <td data-label="Invoice">A2</td>
+            <td data-label="Details">August 13, 2022  05:14:00</td>
+            <td data-label="Due Date">August 13, 2022  08:14:00</td>
+            <td data-label="Amount">$78.00</td>
+            <td data-label="Payment"><button class="btn-invoice">Make Payment </button></td>
+          </tr> -->
+           
+         </tbody>
+       </table>
+                  
+</div>
+
+    <!-- Profile Page End -->
+    <!-- core  -->
+    <script src="{% static 'vendors/jquery/jquery-3.4.1.js' %}"></script>
+    <script src="{% static 'vendors/bootstrap/bootstrap.bundle.js' %}"></script>
+
+    <!-- bootstrap 3 affix -->
+    <script src="{% static 'vendors/bootstrap/bootstrap.affix.js' %}"></script>
+
+    <!-- Isotope -->
+    <script src="{% static 'vendors/isotope/isotope.pkgd.js' %}"></script>
+
+    <!-- LeadMark js -->
+    <script src="{% static 'js/leadmark.js' %}"></script>
+</body>
+</html>

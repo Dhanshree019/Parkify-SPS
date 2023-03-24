@@ -1,0 +1,64 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="{% static 'admin_pages/admin.css' %}">
+  </head>
+  <body>
+    <header>
+      <img src="{% static 'admin_pages/images/3.png' %}" width="120" height="80" alt="" />
+      <nav class="navigationPage">
+        <center>
+          <h1 class="title">ADMIN PAGE</h1>
+        </center>
+      </nav>
+  </header>
+      <div name="main-div" style="width: 100%;">
+        <!-- <div name="entry-div" style="align-items: center; float: left; width: 50%"> -->
+            <center>
+              <h1>Entry Gate</h1>
+            </center>
+            <a href="/admin/detect">
+
+              <img style="display: block;
+                margin-left: auto;
+                margin-right: auto;
+                cursor: pointer;
+                width: 100px;" 
+                src="{% static 'admin_pages/images/cmr.png' %}" alt="Entry Image" /> <br/>
+            </a>
+            
+            <center>
+              <h2>Upload images here</h2>
+            </center>
+            
+            <!-- <p class="para1">
+                Customer Name : Harshit Wandhare <br/>
+                NUMBER PLATE : MH49BA2207 <br/>
+                Entry Time: 2019-12-17 18:21:39.211378 <br/>
+                Parking Slot Alloted: 25
+            </p> -->
+        <!-- </div> -->
+        <!-- <div class="vertical_line"></div> -->
+        <!-- <div name="exit-div" style="float: right; width: 50%">
+            <h1 style="text-align:center">Exit Gate</h1>
+            <img style="display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100px;" src="{% static 'admin_pages/images/car1.jpg' %}" alt="Entry Image" /> <br/>
+            <p class="para2">
+                Customer Name : Harshit Wandhare <br/>
+                NUMBER PLATE : MH49BA2207 <br/>
+                Entry Time: 2019-12-17 18:21:39.211378 <br/>
+                Parking Slot Alloted: 25
+            </p>
+        </div> -->
+      </div>  
+</body>
+  </html>

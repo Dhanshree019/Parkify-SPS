@@ -1,0 +1,37 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Info</title>
+    <link rel="stylesheet" href="{% static 'admin_pages/admin-page2.css' %}">
+</head>
+<body>
+    <header>
+        <img src="{% static 'admin_pages/images/3.png' %}" width="120" height="80" alt="" />
+        <nav class="navigationPage">
+            <h1>ADMIN PAGE</h1>
+        </nav>
+    </header>
+    <div class="row">
+        <div class="column">
+            <h2 class="pie-text">Available Parking Slots: <br/> <div class="number">40/100</div></h2>
+            <div class="piechart"></div>
+        </div>
+        <div class="column" style="background-color: lightgrey">
+            <p class="vehicle_info">
+                Number of vehicles registered: 36 <br /> <br />
+                Total amount pending: ₹300/- <br /> <br />
+                Parking fee collected per day: ₹600/- <br /> <br />
+                Last 3 entries: MH49BA2207 <br/>
+                MH49BA2207 <br />
+                MH49BA2207
+            </p>
+        </div>
+    </div>
+</body>
+</html>

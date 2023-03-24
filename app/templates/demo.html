@@ -1,0 +1,136 @@
+{% load static %}
+{% static "images" as url_of_img %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with LeadMark landing page.">
+    <meta name="author" content="Devcrud">
+    <!-- font icons -->
+    <link rel="stylesheet" href="{% static 'vendors/themify-icons/css/themify-icons.css' %}">
+    <!-- Bootstrap + LeadMark main styles -->
+    <link rel="stylesheet" href="{% static 'css/leadmark.css' %}">
+    <title>Demo</title>
+</head>
+<body>
+    <!-- page Navigation -->
+    <div class="profile_div">
+        <nav class="navbar custom-navbar navbar-expand-md navbar-light fixed-top" data-spy="affix" data-offset-top="10">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="assets/imgs/logo.png" alt="">
+                </a>
+                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="register.html">Register</a>
+                        </li> -->
+                        
+                       
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+        <!-- End Of Second Navigation -->
+
+        <!-- Upload -->
+       
+        <!-- <div class="drag-area">
+            <h1 class="demo_heading">Try our model</h1>
+            <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <header>Drag & Drop to Upload File</header>
+            <span>OR</span>
+            <button>Browse File</button>
+            
+            <input type="file" hidden>
+          </div>
+
+          <div class="demo_number">
+            <h2 class="number_heading">Vechicle Number: </h2>
+          </div> -->
+
+    <style>
+
+      .bottom_div {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+      }
+
+    </style>
+
+
+    {% if show_info == "y" %}       
+    
+    <div class="container my-5">
+      <div class="d-flex justify-content-center">
+        <div class="image my-3">
+          {% if obj %}
+          <img class="img-thumbnail" src="{{obj.img.url}}" alt="" />
+          {% endif %}
+        </div>
+      </div>
+      <div>
+        <h2 class="text-center">Vehicle Number :: {{text}}</h2>
+        <h2 class="text-center">Name :: {{user_name}}</h2>
+        <h2 class="text-center">Alloted slot :: {{token}}</h2>
+
+        <br>
+        <a class="bottom_div" href="/profile">
+          <button class="btn btn-primary">Done</button>
+        </a>
+      </div>
+    </div>
+
+    {% else %}
+    
+    <div class="container my-5">
+      <div class="d-flex justify-content-center">
+        
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="input-group mb-3">{{form.img}}</div>
+          <div class="input-group mb-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+
+        <!-- <div class="image my-3">
+          {% if obj %}
+          <img src="{{obj.img.url}}" alt="" />
+          {% endif %}
+        </div> -->
+      </div>
+    </div>
+    
+    {% endif %}
+
+          <!-- Upload Ends -->
+
+        <!-- core  -->
+        <script src="{% static 'vendors/jquery/jquery-3.4.1.js' %}"></script>
+        <script src="{% static 'vendors/bootstrap/bootstrap.bundle.js' %}"></script>
+    
+        <!-- bootstrap 3 affix -->
+        <script src="{% static 'vendors/bootstrap/bootstrap.affix.js' %}"></script>
+    
+        <!-- Isotope -->
+        <script src="{% static 'vendors/isotope/isotope.pkgd.js' %}"></script>
+    
+        <!-- LeadMark js -->
+        <script src="{% static 'js/leadmark.js' %} "></script>
+        <script src="{% static 'js/demo.js' %}"></script>
+</body>
+</html>

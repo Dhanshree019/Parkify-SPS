@@ -1,0 +1,119 @@
+{% load static %}
+{% static "images" as url_of_img %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{% static 'css/register.css' %}">
+  <title>Sign in & Sign up Form</title>
+</head>
+
+<body>
+  <div class="container">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+      <div class="front">
+        <!-- <img src="img\login.png" alt=""> -->
+        <!-- <div class="text"> -->
+        <!-- <span class="text-1">Welcome to <br> Consumer Cycle</span> -->
+        <!-- <span class="text-2">Let's get connected</span> -->
+        <!-- </div> -->
+      </div>
+      <div class="back">
+        <!-- <img class="backImg" src="img\register.png" alt=""> -->
+        <div class="text">
+          <span class="text-1">Complete miles of journey <br> with one step</span>
+          <span class="text-2">Let's get started</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="forms">
+      <div class="form-content">
+        <!-- Login Start -->
+        <div class="login-form">
+          <div class="title">Login</div>
+         
+          <form action="/login/" method="POST">
+
+            {% csrf_token %}
+            
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="text" placeholder="Enter your email" name="email" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Enter your password" name="password" required>
+              </div>
+              <div class="button input-box">
+                <input type="submit" value="Login">
+              </div>
+              <!-- <a href="profile.html">
+            </a> -->
+              <div class="text sign-up-text">Don't have an account? <label for="flip">Sigup now</label></div>
+            </div>
+
+          </form>
+        </div>
+        <!-- Login End-->
+
+        <!-- Signup Start -->
+        <div class="signup-form">
+          <div class="title">Signup</div>
+        
+          <form action="/register/" method="POST">
+
+            {% csrf_token %}
+
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Enter your Full name" name="name" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="text" placeholder="Enter your Email" name="email" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-phone"></i>
+                <input type="phone" placeholder="Enter your Phone no" name="phone" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-map-marker"></i>
+                <input type="textarea" placeholder="Enter your vehicle number" name="vehicle_no" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Enter your Password" name="password" required>
+              </div>
+              <!-- <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Confirm your Password" name="cpassword" required>
+              </div> -->
+              <div class="button input-box">
+                <input type="submit" value="Sign Up">
+              </div>
+              <!-- <a href="profile.html">
+            </a> -->
+              <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
+            </div>
+
+          </form>
+
+          
+        </div>
+        <!-- Signup End -->
+      </div>
+    </div>
+  </div>
+
+  <!-- <script src="js/app.js"></script> -->
+</body>
+
+</html>

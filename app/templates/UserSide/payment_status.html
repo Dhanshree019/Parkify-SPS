@@ -1,0 +1,184 @@
+{% load static %}
+
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+  </head>
+    <style>
+      body {
+        text-align: center;
+        padding: 40px 0;
+        background: #EBF0F5;
+      }
+        h1 {
+          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+          font-weight: 900;
+          font-size: 40px;
+          margin-bottom: 10px;
+        }
+        p {
+          color: #404F5E;
+          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+          font-size:20px;
+          margin: 0;
+        }
+      i {
+        color: #9ABC66;
+        font-size: 100px;
+        line-height: 200px;
+        margin-left:-15px;
+      }
+      .card {
+        background: white;
+        padding: 60px;
+        border-radius: 4px;
+        box-shadow: 0 2px 3px #C8D0D8;
+        display: inline-block;
+        margin: 0 auto;
+      }
+    </style>
+    <!-- <body>
+      <div class="card">
+      <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
+        <i class="checkmark">✓</i>
+      </div>
+        <h1>Success!</h1> 
+        <p>We received your payment!<br/> Thank You!</p>
+      </div>
+    </body> -->
+    
+    
+    
+    <body>
+
+      <style>
+        .btn_div {
+          display: flex;
+          justify-content: center;
+          flex-direction: row;
+        }
+      </style>
+
+       <!-- processing -->
+
+      <div id="payment_processing" class="card">
+        <img height=300 width=340 src="{% static 'payment/payment-processing.gif' %}" alt="Processing!">
+        <h1 style="color: rgb(133, 133, 243);">Processing!</h1> 
+        <p>We are Processing your payment!<br/> Please wait!</p>
+      </div>
+
+
+      <!-- success -->
+      <div id="payment_success" class="card">
+        <img height=300 width=400 src="{% static 'payment/payment-success.gif' %}" alt="Success!">
+        <h1 style="color: rgb(118, 246, 118);">Success!</h1> 
+        <p>We received your payment!<br/> Thank You!</p>
+      </div>
+
+
+      <!-- failed -->
+      <div id="payment_failed" class="card">
+        <img height=300 width=400 src="{% static 'payment/payment-failed.gif' %}" alt="Failed!">
+        <h1 style="color: rgb(244, 108, 108);">Failed!</h1> 
+        <p>Oops Something went wrong!<br/> Try again!</p>
+      </div>
+
+      <br> <br> <br>
+      <div>
+        <a href="/profile">
+          <button class="btn-div btn btn-primary">Home</button>
+        </a>
+      </div>
+
+
+    </body>
+
+
+
+    <script>
+        $(document).ready(function() {
+
+            /*$("button").click(function(){
+                $("p").hide();
+            });*/
+
+
+            function getPaymentStatus(pid) {
+
+              for (let i=0; i<3; i++) {
+                console.log("\n\n\ni : " + i);
+                setTimeout(function () {
+                  
+                  setTimeout(() => {
+                    console.log("Test...");
+                  },  1000);
+
+                  $.ajax({
+                    url: "/payment/status",
+                    method: "POST",
+                    data: {"pid": pid},
+                    success: function(result) {
+                      console.log("\n\nstate :: ", result.state)
+                      if (result.state == "processing") {
+                        $("#payment_processing").fadeIn();
+                        $("#payment_success").fadeOut();
+                        $("#payment_failed").fadeOut();
+                      }
+                      else if (result.state == "succeeded") {
+                        $("#payment_processing").fadeOut();
+                        $("#payment_success").fadeIn();
+                        $("#payment_failed").fadeOut();
+                      }
+                      else {
+                        $("#payment_processing").fadeOut();
+                        $("#payment_success").fadeOut();
+                        $("#payment_failed").fadeIn();
+                      }
+                    },
+                  });
+                }, 2100);
+              }
+            }
+
+
+            //$("#payment_processing").fadeOut();
+            $("#payment_success").fadeOut();
+            $("#payment_failed").fadeOut();
+
+            setTimeout(function () {
+              
+              $.ajax({
+                url: "/payment/pay",
+                success: function(result) {
+
+                  console.log("Response :: " + result.auth_url);
+
+                  if (result.success) {
+                    window.open(result.auth_url, '_blank');
+                    getPaymentStatus(result.payment_id);
+                  }
+                  else {
+                    $("#payment_processing").fadeOut();
+                    $("#payment_success").fadeOut();
+                    $("#payment_failed").fadeIn();
+                  }
+
+                }
+              });
+
+            }, 1000);
+
+
+
+
+
+        });
+    </script>
+
+
+
+</html>
+

@@ -1,0 +1,351 @@
+{% load static %}
+{% static "images" as url_of_img %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with LeadMark landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Parkify</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="{% static 'vendors/themify-icons/css/themify-icons.css' %}">
+    <!-- Bootstrap + LeadMark main styles -->
+    <link rel="stylesheet" href="{% static 'css/leadmark.css' %}">
+    <link rel="stylesheet" href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %}">
+    
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+    <!-- page Navigation -->
+    <nav class="navbar custom-navbar navbar-expand-md navbar-light fixed-top" data-spy="affix" data-offset-top="10">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="static/imgs/logo.png" alt="">
+            </a>
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#service">Home</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="profile.html">Profile</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+
+                    {% if not request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="signIn" class="ml-4 nav-link btn btn-primary btn-sm rounded">Register</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a href="profile" class="ml-4 nav-link btn btn-primary btn-sm rounded">Profile</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Of Second Navigation -->
+
+    <!-- Page Header -->
+    <header class="header">
+        <div class="overlay">
+            <h1 class="title">Park Smart</h1>
+            <h1 class="subtitle">Now have a hassle free parking experience with Parkify</h1>
+            <a href="demo"><button type="submit" class="try">Click here for Demo</button></a>
+            <img class="car" src="static/imgs/car.png" alt="">
+        </div>
+        <div class="shape">
+            <svg viewBox="0 0 1500 200">
+                <path
+                    d="m 0,240 h 1500.4828 v -71.92164 c 0,0 -286.2763,-81.79324 -743.19024,-81.79324 C 300.37862,86.28512 0,168.07836 0,168.07836 Z" />
+            </svg>
+        </div>
+        <!-- <div class="mouse-icon"><div class="wheel"></div></div> -->
+    </header>
+    <!-- End Of Page Header -->
+
+
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-md-6 pr-md-5 mb-4 mb-md-0">
+                    <!-- <h6 class="section-title mb-0">About Company</h6> -->
+                    <img src="static/imgs/about.png" alt="" class="w-100 mt-3 shadow-sm">
+                </div>
+                <div class="col-md-6 pl-md-5">
+                    <div class="row">
+                        <div class="col-12 mt-4">
+                            <h1>Automatic Number plate recognition</h1>
+                            <p>Simply drive up to the barrier or entry gate of a parking lot. No need to collect parking
+                                tickets or pay on the spot.</p>
+                            <h3>What is ANPR?</h3>
+                            <p>Automatic number plate recognition, otherwise known as ‘licence plate recognition’, is
+                                technology that uses optical character recognition to read vehicle registration
+                                plates.You can use Parkable’s ANPR to grant secure, seamless entry and exit through
+                                access control gates, and record which vehicles are in your car park.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End OF About Section -->
+
+    <!-- Service Section -->
+    <section id="service" class="section pt-0">
+        <div class="container">
+            <h6 class="section-title text-center">Why implemented Parkify?</h6>
+            <!-- <h6 class="section-subtitle text-center mb-5 pb-3">Voluptates architecto provident deserunt.</h6> -->
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 mb-md-0">
+                        <div class="card-body">
+                            <img src="static/imgs/service1.png" alt="" class="service">
+                            <!-- <small class="text-primary font-weight-bold">01</small> -->
+                            <h5 class="card-title mt-3"> Seamless access <h5>
+                                    <p class="mb-0">Open access control simply by driving to the entrance. With no swipe
+                                        cards needed, you have low-touch, easy access, removing congestion at the entry.
+                                    </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 mb-md-0">
+                        <div class="card-body">
+                            <img src="static/imgs/service2.png" alt="" class="service">
+                            <!-- <small class="text-primary font-weight-bold">02</small> -->
+                            <h5 class="card-title mt-3">Heightened security<h5>
+                                    <p class="mb-0">Limit car park access to an approved list of vechicles. Cameras
+                                        record each vechicle so you know who has accessed your car park and for how
+                                        long.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 mb-md-0">
+                        <div class="card-body">
+                            <img src="static/imgs/service3.png" alt="" class="service">
+                            <!-- <small class="text-primary font-weight-bold">03</small> -->
+                            <h5 class="card-title mt-3">Automated reporting<h5>
+                                    <p class="mb-0">ANPR cameras track which vechicles are in the car park, giving you
+                                        automated, real-time information and reporting through the Parkable admin panel.
+                                    </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End OF Service Section -->
+
+    <!-- payment Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-md-6 pr-md-5 mb-4 mb-md-0">
+                    <!-- <h6 class="section-title mb-0">About Company</h6> -->
+                    <img src="static/imgs/payment1.png" alt="" class="payment1">
+                </div>
+                <div class="col-md-6 pl-md-5">
+                    <div class="row">
+                        <div class="col-12 mt-4">
+                            <h1 class="payment_heading">Pay online</h1>
+                            <p class="payment_para">Now you can pay your parking fee easily online without having to worry about cash and
+                                without wasting time.</p>
+                            <img src="static/imgs/payment2.png" alt="" class="payment2">
+                            <div class="payment_steps">
+                                <ul class="payment_list">
+                                    <li>Login to the website</li>
+                                    <li>Check your IN/OUT parking time</li>
+                                    <li>View the payable amount</li>
+                                    <li>Click on the pay button</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End OF payment Section -->
+
+    <!-- Testmonial Section -->
+    <section class="section" id="testmonial">
+        <div class="container">
+            <h6 class="team_heading">Meet our Team</h6>
+            <div class="row">
+                <div class="col-md-3 my-3 my-md-0">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="media align-items-center mb-3">
+                                <img class="team" src="static/imgs/harshit.png" alt="">
+                                <!-- <div class="media-body">
+                                    <h6 class="mt-1 mb-0">John Doe</h6>
+                                    <small class="text-muted mb-0">Business Analyst</small>
+                                </div> -->
+                            </div>
+                            <h6 class="team_member">Harshit Wandhare</h6>
+                            <!-- <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus enim
+                                modi, id dicta reiciendis itaque.</p> -->
+                                <div class="social">
+                                    <a class="" href="https://github.com/harshitwandhare"><i class="fa fa-github"></i></a>
+                                    <a class="" href="https://www.linkedin.com/in/harshit-wandhare-a088201aa/"><i class="fa fa-linkedin-square"></i></a>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 my-3 my-md-0">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="media align-items-center mb-3">
+                                <img class="team" src="static/imgs/aakanksha.jpeg" alt="">
+                                <!-- <div class="media-body">
+                                    <h6 class="mt-1 mb-0">John Doe</h6>
+                                    <small class="text-muted mb-0">Business Analyst</small>
+                                </div> -->
+                            </div>
+                            <h6 class="team_member">Aakanksha Atugade</h6>
+                            <!-- <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus enim
+                                modi, id dicta reiciendis itaque.</p> -->
+                                <div class="social">
+                                    <a class="" href="https://github.com/Aakanksha0209"><i class="fa fa-github"></i></a>
+                                    <a class="" href="https://www.linkedin.com/in/aakanksha-atugade-4b715b220/"><i class="fa fa-linkedin-square"></i></a>
+                                   
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 my-3 my-md-0">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="media align-items-center mb-3">
+                                <img class="team" src="static/imgs/rahul.png" alt="">
+                                <!-- <div class="media-body">
+                                    <h6 class="mt-1 mb-0">John Doe</h6>
+                                    <small class="text-muted mb-0">Business Analyst</small>
+                                </div> -->
+                            </div>
+                            <h6 class="team_member">Rahul Shewale</h6>
+                            <!-- <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus enim
+                                modi, id dicta reiciendis itaque.</p> -->
+                                <div class="social">
+                                    <a class="" href="https://github.com/r-1010/"><i class="fa fa-github"></i></a>
+                                    <a class="" href="https://www.linkedin.com/in/rahul-shewale-182ba3227/?originalSubdomain=in"><i class="fa fa-linkedin-square"></i></a>
+                                 
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 my-3 my-md-0">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="media align-items-center mb-3">
+                                <img class="team" src="static/imgs/dhanshree2.png" alt="">
+                                <!-- <div class="media-body">
+                                    <h6 class="mt-1 mb-0">John Doe</h6>
+                                    <small class="text-muted mb-0">Business Analyst</small>
+                                </div> -->
+                            </div>
+                            <h6 class="team_member">Dhanshree Patangrao</h6>
+                            <!-- <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus enim
+                                modi, id dicta reiciendis itaque.</p> -->
+                                <div class="social">
+                                    <a class="" href="https://github.com/Dhanshree019"><i class="fa fa-github"></i></a>
+                                    <a class="" href="https://www.linkedin.com/in/dhanshree-patangrao-4b2a751b8/"><i class="fa fa-linkedin-square"></i></a>
+                                    
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- End of Testmonial Section -->
+
+    <!-- Contact Section -->
+    
+    <section id="contact" class="section has-img-bg pb-0">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-5 my-3">
+                    <h6 class="mb-0">Phone</h6>
+                    <p class="mb-4">+ 123-456-7890</p>
+
+                    <h6 class="mb-0">Address</h6>
+                    <p class="mb-4">VIT</p>
+
+                    <h6 class="mb-0">Email</h6>
+                    <p class="mb-0">prakify@website.com</p>
+                    <p></p>
+                </div>
+                <div class="col-md-7">
+                    <form>
+                        <h4 class="mb-4">Contact us</h4>
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <input type="text" class="form-control text-white rounded-0 bg-transparent" name="name"
+                                    placeholder="Name">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <input type="email" class="form-control text-white rounded-0 bg-transparent"
+                                    name="Email" placeholder="Email">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <input type="text" class="form-control text-white rounded-0 bg-transparent"
+                                    name="subject" placeholder="Subject">
+                            </div>
+                            <div class="form-group col-12">
+                                <textarea name="message" id="" cols="30" rows="4"
+                                    class="form-control text-white rounded-0 bg-transparent"
+                                    placeholder="Message"></textarea>
+
+                            </div>
+                            <div class="form-group col-12 mb-0">
+                                <button type="submit" class="btn btn-primary rounded w-md mt-3">Send</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Page Footer -->
+            <footer class="mt-5 py-4 border-top border-secondary">
+                <!-- <p class="mb-0 small">&copy; <script>document.write(new Date().getFullYear())</script>, LeadMark Created By <a href="https://www.devcrud.com" target="_blank">DevCrud.</a>  All rights reserved </p>      -->
+            </footer>
+            <!-- End of Page Footer -->
+        </div>
+    </section>
+
+    <!-- core  -->
+    <script src="{% static 'vendors/jquery/jquery-3.4.1.js' %}"></script>
+    <script src="{% static 'vendors/bootstrap/bootstrap.bundle.js' %}"></script>
+
+    <!-- bootstrap 3 affix -->
+    <script src="{% static 'vendors/bootstrap/bootstrap.affix.js' %}"></script>
+
+    <!-- Isotope -->
+    <script src="{% static 'vendors/isotope/isotope.pkgd.js' %}"></script>
+
+    <!-- LeadMark js -->
+    <script src="{% static 'js/leadmark.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacant Parking Spots</title>
+    <link rel="stylesheet" href="{% static 'admin_pages/admin-page3.css' %}" >
+</head>
+<body>
+    <header>
+        <img src="{% static 'admin_pages/images/3.png' %}" width="120" height="80" alt="" />
+        <nav class="navigationPage">
+            <h1>ADMIN PAGE</h1>
+        </nav>
+    </header>
+
+    <!-- 1st -->
+    <div>
+        <h2>Vacant parking slots</h2>
+        <div style="background-color: grey; width: 100%; height: 150px;">
+            <div class="grid-container">
+                {% if asl == "0" %}
+                    <h3>No slots Available ! </h3>
+                {% else %}
+                    {% for i in vslots %}
+                        <div class="grid-item">{{i}}</div>
+                    {% endfor %}
+                {% endif %}
+                
+                <!-- <div class="grid-item">7</div>
+                <div class="grid-item">8</div>  
+                <div class="grid-item">9</div>
+                <div class="grid-item">10</div>
+                <div class="grid-item">11</div>  
+                <div class="grid-item">12</div>
+                <div class="grid-item">13</div>
+                <div class="grid-item">14</div> 
+                <div class="grid-item">15</div>   -->
+              </div>
+        </div>
+
+        <!-- 2nd -->
+        <div style="width:100%; height: 200px; margin-top: 20px">
+            <div class="grid-box">
+                <div class="column" style="background-color: lightgrey;">
+                    <form action="/admin.html">
+                        <label>Emergency Manual Number:</label> <br /> <br />
+                        <input 
+                            type="text" 
+                            id="number_plate"  
+                            placeholder="Number Plate" 
+                            style="font-size: 14pt; border-radius: 10px; height: 40px;"
+                        >  
+                        <input 
+                            type="text" 
+                            id="slot_number" 
+                            placeholder="Slot No." 
+                            style="font-size: 14pt; border-radius: 10px; height: 40px;"
+                        > <br /> <br />
+                        <input type="Submit" value="Submit" style="font-size: 14pt; border-radius: 4px;">
+                    </form>
+                </div>
+                <div class="column" style="background-color: lightgrey">
+                    <form action="/admin.html">
+                        <label>Emergency Manual Number:</label> <br /> <br />
+                        <input 
+                            type="text" 
+                            id="number_plate" 
+                            placeholder="Number Plate" 
+                            style="font-size: 14pt; border-radius: 10px; height: 40px;"
+                        >  
+                        <input 
+                            type="text" 
+                            id="slot_number" 
+                            placeholder="Slot No." 
+                            style="font-size: 14pt; border-radius: 10px; height: 40px;"
+                        > <br /> <br />
+                        <input type="Submit" value="Submit" style="font-size: 14pt; border-radius: 4px;">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
